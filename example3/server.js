@@ -15,13 +15,11 @@ app.use(bodyParser.json({ extended: true }));
 // Get all students
 app.get('/students', function(req, res) {
   knex('students').then((result) => {
-    console.log(result);
-    knex.destroy();
+    console.log(result)
     res.json(result)
   })
   .catch((err) => {
-    console.error(err);
-    knex.destroy();
+    console.error(err)
   });
 });
 
@@ -37,7 +35,6 @@ app.get('/student/:id', function(req, res) {
     })
     .catch((err)=>{
       console.error(err);
-      knex.destroy();
     })
 
 });
@@ -49,12 +46,10 @@ app.post('/student', function(req, res) {
     .insert(req.body, '*')
     .then((result) => {
       console.log(result);
-      knex.destroy();
       res.sendStatus(200);
     })
     .catch((err) => {
       console.error(err);
-      knex.destroy();
       res.sendStatus(400);
     });
 });
@@ -66,12 +61,10 @@ app.put('/student/:id', function(req, res) {
     .where('id', req.params.id)
     .then((result) => {
       console.log(result);
-      knex.destroy();
       res.sendStatus(200);
     })
     .catch((err) => {
       console.error(err);
-      knex.destroy();
       res.sendStatus(400);
     });
 });
@@ -83,12 +76,10 @@ app.delete('/student/:id', function(req, res) {
     .where('id', req.params.id)
     .then((result) => {
       console.log(result);
-      knex.destroy();
       res.sendStatus(200);
     })
     .catch((err) => {
       console.error(err);
-      knex.destroy();
       res.sendStatus(400);
     });
 });

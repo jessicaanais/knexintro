@@ -3,8 +3,9 @@ const config = require('./knexfile.js')[env];
 const knex = require('knex')(config);
 
 
-knex('students').then((result) => {
-  console.log(result);
+knex('students').then((results) => {
+  console.log(results[5]);
+
   knex.destroy();
 })
 .catch((err) => {

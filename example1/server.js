@@ -6,4 +6,4 @@ const sql = knex('students').toString();
 
 console.log(sql);
 
-knex.destroy();
+// knex.destroy();
