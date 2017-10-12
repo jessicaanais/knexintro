@@ -12,9 +12,9 @@ app.use(bodyParser.json({ extended: true }));
 // CRUD
 // create read update delete (destroy)
 
-// Get all users
-app.get('/users', function(req, res) {
-  knex('users').then((result) => {
+// Get all students
+app.get('/students', function(req, res) {
+  knex('students').then((result) => {
     console.log(result);
     knex.destroy();
     res.json(result)
@@ -26,9 +26,9 @@ app.get('/users', function(req, res) {
 });
 
 // Get one user
-app.get('/users/:id', function(req, res) {
+app.get('/student/:id', function(req, res) {
 
-  knex('users')
+  knex('students')
     .where('id', req.params.id)
     .limit(1)
     .then((result)=>{
@@ -43,9 +43,9 @@ app.get('/users/:id', function(req, res) {
 });
 
 // Create new user
-app.post('/users', function(req, res) {
+app.post('/student', function(req, res) {
 
-  knex('users')
+  knex('students')
     .insert(req.body, '*')
     .then((result) => {
       console.log(result);
@@ -60,8 +60,8 @@ app.post('/users', function(req, res) {
 });
 
 // Update one user
-app.put('/users/:id', function(req, res) {
-  knex('users')
+app.put('/student/:id', function(req, res) {
+  knex('students')
     .update(req.body)
     .where('id', req.params.id)
     .then((result) => {
@@ -77,8 +77,8 @@ app.put('/users/:id', function(req, res) {
 });
 
 // Delete one user
-app.delete('/users/:id', function(req, res) {
-  knex('users')
+app.delete('/student/:id', function(req, res) {
+  knex('students')
     .del()
     .where('id', req.params.id)
     .then((result) => {
